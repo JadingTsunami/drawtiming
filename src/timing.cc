@@ -35,6 +35,8 @@ string timing::vFont = "Helvetica";
 
 static int vCellHsep, vCellH, vCellHtxt, vCellHdel, vCellHtdel, vCellWtsep,
             vCellWrm;
+            
+static const int vCellWtr=8; // Proportional width of a transition
 
 // ------------------------------------------------------------
 
@@ -436,11 +438,11 @@ static void draw_transition (gc &gc, int x, int y, const sigvalue &last,
   
   case UNDEF:
   case X:
-    for (int i = 0; i < 8; ++ i) {
-      gc.line (x+i*(vCellW/8), y + vCellH,
-	       x+(i+1)*(vCellW/8), y + vCellHsep);
-      gc.line (x+i*(vCellW/8), y + vCellHsep,
-	       x+(i+1)*(vCellW/8), y + vCellH);
+    for (int i = 0; i < vCellWtr; ++ i) {
+      gc.line (x+i*(vCellW/vCellWtr), y + vCellH,
+	       x+(i+1)*(vCellW/vCellWtr), y + vCellHsep);
+      gc.line (x+i*(vCellW/vCellWtr), y + vCellHsep,
+	       x+(i+1)*(vCellW/vCellWtr), y + vCellH);
     }
     break;
   
