@@ -320,9 +320,9 @@ static int label_width (const data &d) {
 
 static void base_size (const data &d, int &w, int &h) {
 
-  vCellHsep = vCellHt / 8;
+  vCellHsep = vCellHt / 4;
   vCellH=vCellHt-vCellHsep;
-  vCellHtxt=vCellHt*3/4;
+  vCellHtxt=vCellHt*5/8;
   vCellHdel = vCellHt * 3/8;
   vCellHtdel=vCellHt/4;
   vCellWtsep=vCellW/4;
