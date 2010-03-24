@@ -1,0 +1,232 @@
+.\" Copyright (c)2004 by Edward Counce, All rights reserved
+.\" Copyright (c)2006-2007 by Salvador E. Tropea, All rights reserved
+.\" This file is part of drawtiming.
+.\"
+.\" Drawtiming is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" Drawtiming is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with drawtiming; if not, write to the Free Software
+.\" Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+.\"
+.Dd April 13, 2005
+.Dt DRAWTIMING 1
+.Os
+.Sh NAME
+.Nm drawtiming
+.Nd generate timing diagram from signal description
+.Sh SYNOPSIS
+.Nm
+.Op Fl -verbose
+.Op Fl -scale Ar factor
+.Op Fl -pagesize Ar WxH
+.Op Fl -aspect
+.Op Fl -cell-height Ar H
+.Op Fl -cell-width Ar W
+.Op Fl -font-size Ar pts
+.Op Fl -line-width Ar W
+.Fl -output Ar target
+.Ar
+.Sh DESCRIPTION
+This application provides a command line tool for documenting hardware
+and software designs through ideal timing diagrams.  It reads signal
+descriptions from a text file with an intuitive syntax, and outputs an
+ideal timing diagram to an image file.  Notation typical of timing
+diagrams found in the Electrical Engineering discipline is used,
+including arrows indicating causal relationships between signal
+transitions.
+.Pp
+The options are as follows:
+.Bl -tag -width Fl
+.It Fl -help
+Show usage reminder.
+.It Fl -verbose
+Increase diagnostic output.
+.It Fl -scale Ar factor
+Scale the diagram by the given
+.Ar factor .
+The default scaling factor is 1.0.
+.It Fl -pagesize Ar WidthxHeight
+Scale the diagram to fit given image size.
+.It Fl -aspect
+Maintain fixed aspect ratio if --pagesize given.
+.It Fl -cell-height Ar H
+Height of the each signal in pixels. Default is 32.
+.It Fl -cell-width Ar W
+Width for the time unit in pixels. Defaults is 64.
+.It Fl -font-size Ar pts
+Font size in pts. Default is 18.
+.It Fl -line-width Ar W
+Line width for drawings in pixels. Default is 1.
+.It Fl -output Ar target
+The name and format of the output image is determined by
+.Ar target .
+.It Ar
+The input files describe the signals to be diagrammed.  See the
+.Sx FILES
+and
+.Sx EXAMPLES
+sections for a description of their format.
+.El
+.Sh FILES
+The following is a technical description of the input file syntax and
+semantics.  If you are reading this for the first time, you may want
+to skip ahead to the 
+.Sx EXAMPLES
+section.
+.Pp
+The input file consists of a series of statements describing the
+signal transitions during each clock period of the timing diagram.
+Whitespace and comments following a 
+.Ql #
+are ignored.
+.Pp
+.Bl -tag -width "SIGNAL=VALUE"
+.It SIGNAL=VALUE
+This statement changes the value of a signal at the beginning of the
+current clock, and adds it to the list of signal dependencies.  The
+signal name may consist of one or more words consisting of
+alphanumerics and underscores joined by periods, 
+.Ql signal.name ,
+for example.  The signal value format is described further on.
+.It SIGNAL
+This statement adds a signal to the list of dependencies without
+changing its value.
+.El
+.Pp
+Statements are seperated by the following symbols:
+.Bl -tag -width "-tD>"
+.It ,
+The comma seperator is used to seperate statements without
+affecting the dependency list or clock (ie: the next statement will
+add to the dependency list).
+.It ;
+The semicolon seperator resets the list of dependencies without
+incrementing the clock
+.It .
+The period seperator resets the list of dependencies and
+increments the clock.
+.It =>
+The "causes" seperator renders dependency arrows based on the
+current list of dependencies and then resets the dependency list.
+.It -tD>
+The "delay" seperator renders a delay arrow from the last dependency
+with the annotation 
+.Em tD .
+.El
+.Pp
+Signal values are rendered according to the following rules:
+.Bl -tag -width "0, 1, true, false"
+.It 0 , 1 , true , false
+A binary high/low signal.
+.It tick
+A clock pulse which repeats.
+.It pulse
+A one-shot clock pulse.
+.It X
+A don't care value.
+.It Z
+A tristate value.
+.It Qq ABC
+Any other alphanumeric token, or text enclosed in quotes is rendered
+as a state.  For example, 
+.Ql Qq 1 ,
+is rendered as a state, whereas,
+.Ql 1 ,
+is rendered as a high signal.
+.El
+.Sh EXAMPLES
+Let's look at an example input file, and parse its meaning.
+.Pp
+.Bd -literal -offset indent
+POWER=0, FIRE=0, ARMED=0, LED=OFF, COUNT=N.
+POWER=1 => LED=GREEN.
+FIRE=1. 
+FIRE => ARMED=1.
+FIRE=0.
+FIRE=1.
+FIRE, ARMED => LED=RED;
+FIRE => COUNT="N+1".
+.Ed
+.Pp
+This input file descibes the changes in five signals over a period of
+seven clock cycles.  The end of each clock cycle is indicated with a
+period.  For example, the following line indicates a single signal,
+named
+.Ql FIRE
+became true during a clock cycle:
+.Pp
+.Dl FIRE=1.
+.Pp
+The first clock period of the input file provides the initial value
+for all signals to be diagrammed.  The signals will appear on the
+timing diagram in the order they first appear in the input file.
+Signals are assumed to have the
+.Qq don't care
+value if their initial value is not given.  
+.Pp
+Independent signal transitions which occur simultaneously are normally
+seperated by commas. Since signals aren't normally expected to change
+simultaneously, the initial state is a good example of this:
+.Pp
+.Dl POWER=0, FIRE=0, ARMED=0, LED=OFF, COUNT=N.
+.Pp 
+Dependencies can also be indicated for a signal transition.
+Dependencies are rendered as arrows on the timing diagram from the
+last change in each dependency to the dependent signal transition.
+Here, the previous change in the state of
+.Ql FIRE
+causes a change in the 
+.Ql ARMED
+signal.
+.Pp
+.Dl FIRE => ARMED=1.
+.Pp
+To indicate that a change in one signal causes an immediate change in
+another signal, list both signal changes in the same clock period:
+.Pp
+.Dl POWER=1 => LED=GREEN.
+.Pp
+For signal state changes with multiple dependencies, seperate the
+dependencies with commas:
+.Pp
+.Dl FIRE, ARMED => LED=RED.
+.Pp
+Sometimes, a single dependency causes multiple independent signals to
+change.  Use a semicolon to start a new list of dependencies.
+Modifying the previous line to indicate that
+.Ql FIRE
+also causes 
+.Ql COUNT
+to increment yields:
+.Pp
+.Dl FIRE, ARMED => LED=RED;
+.Dl FIRE => COUNT="N+1".
+.Pp
+You can find this example and others along with their generated timing
+diagrams on the homepage for
+.Nm
+at
+.Ql http://drawtiming.sourceforge.net .
+.Sh DIAGNOSTICS
+Exit status is 0 on success, and 2 if the command
+fails.
+.Sh COMPATIBILITY
+The
+.Nm
+command has been tested on FreeBSD, Linux, and Cygwin.
+.Sh AUTHORS
+This software package was written by
+.An Edward Counce Aq ecounce@users.sourceforge.net
+Additional modifications by
+.An Salvador E. Tropea Aq set@users.sourceforge.net
+.An Daniel Beer
+.Sh BUGS
+None reported.

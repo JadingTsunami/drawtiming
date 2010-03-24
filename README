@@ -1,0 +1,38 @@
+INTRODUCTION
+
+This project provides a command line tool for documenting hardware and
+software designs through timing diagrams.  It includes a parser for
+reading an intuitive ASCII signal description from an input file, and
+uses the ImageMagick Magick++ API for rasterizing and outputting an
+image of a timing diagram.  Notation typical of timing diagrams
+found in the Electrical Engineering discipline, including the signal
+state transitions with arrows indicating causal relationships between
+signals is generated.  I am not aware of any noncommercial application
+to perform a similiar function.  It is written in C++, and has been
+recently tested on Linux, but should also work for FreeBSD and Cygwin.  
+
+I use this software to document the design of hardware and software
+projects.  I find the resulting timing diagrams to be a good
+complement to call plots for some software projects -- especially
+those with complex relationships between various signals and state
+variables.  Prior to writing this software, I created timing diagrams
+using schematic CAD software, but making changes to the signal
+behavior after the diagram was drawn was too much trouble.
+
+The software is licensed under the terms of the GPL.  See the COPYING
+file for details of the terms under which you may modify or
+redistribute this software.
+
+INSTALL
+
+This package requires the Magick++ API from ImageMagick.  See the
+INSTALL file for generic instructions.  Step-by-step instructions can
+be found on the project homepage.
+
+USAGE
+
+Please consult the man page after installing this package.  The man
+page describes the command usage and input file syntax.  It also
+includes an example.  The same information with more examples can also
+be obtained from the project homepage.
+

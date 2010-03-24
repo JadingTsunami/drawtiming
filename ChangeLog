@@ -1,0 +1,85 @@
+2009-04-02  Edward Counce  <ecounce@users.sourceforge.net>
+
+	* 0.7.1: configure option --without-magick to support building
+	         "Lite" version with mingw/msys.
+
+2008-05-11  Daniel Beer  <beeda742@student.otago.ac.nz>
+
+	* 0.7: added support for Postscript output.
+
+2007-05-31  Edward Counce  <ecounce@users.sourceforge.net>
+
+	* 0.6.2: fix for delay arrow fill.  Release to sourceforge.
+
+2007-05-05  Edward Counce  <ecounce@users.sourceforge.net>
+
+	* 0.6.1: experimental self-referential delay support
+
+2007-03-09  Salvador E. Tropea  <set@users.sourceforge.net>
+
+	* Added: cell width and height, font size and line width configuration.
+
+	* Modified: version to 0.6.0.
+
+2005-05-29  Edward Counce  <ecounce@users.sourceforge.net>
+
+	* implemented the --pagesize and --aspect options
+
+	* Release 0.5
+
+2005-04-13  Edward Counce  <ecounce@users.sourceforge.net>
+
+	* added usage information
+
+	* Release 0.4
+	
+2005-03-01  edward  <ecounce@users.sourceforge.net>
+
+	* resolved compiler warnings in timing.cc
+
+2004-09-24  Edward Counce  <ecounce@users.sourceforge.net>
+
+	* Release 0.3
+
+	* added support for delay annotation
+
+2004-09-22  Edward Counce  <ecounce@users.sourceforge.net>
+
+	* added "make check" target in the samples directory
+
+	* updated documentation about signal values, and removed duplicate
+	documentation from README.
+
+2004-09-21  Edward Counce  <ecounce@users.sourceforge.net>
+
+	* added support for quoted signal values
+
+	* reduced use of string comparisons while rendering
+
+	* added copy constructors and assignment operators to classes
+
+2004-09-20  Edward Counce  <ecounce@users.sourceforge.net>
+
+	* Release 0.2
+
+	* made scale a property of timing::diagram and moved supporting
+	code into that class.
+
+	* added man page.
+
+2004-09-15  Edward Counce  <ecounce@users.sourceforge.net>
+
+	* Release 0.1
+
+	* Restructured for autoconf/automake.
+
+2004-09-14  Edward Counce  <ecounce@users.sourceforge.net>
+
+	* Added rudimentary exception handling at toplevel
+
+	* Added Makefile.freebsd for compiling on FreeBSD.
+
+	* Fixed license notice in source files.
+	
+	
+
