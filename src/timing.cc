@@ -438,12 +438,53 @@ static void draw_transition (gc &gc, int x, int y, const sigvalue &last,
   
   case UNDEF:
   case X:
-    for (int i = 0; i < vCellWtr; ++ i) {
-      gc.line (x+i*(vCellW/vCellWtr), y + vCellH,
-	       x+(i+1)*(vCellW/vCellWtr), y + vCellHsep);
-      gc.line (x+i*(vCellW/vCellWtr), y + vCellHsep,
-	       x+(i+1)*(vCellW/vCellWtr), y + vCellH);
+    switch (last.type) {
+    default:
+      for (int i = 0; i < vCellWtr; ++ i) {
+        gc.line (x+i*(vCellW/vCellWtr), y + vCellH,
+	         x+(i+1)*(vCellW/vCellWtr), y + vCellHsep);
+        gc.line (x+i*(vCellW/vCellWtr), y + vCellHsep,
+	         x+(i+1)*(vCellW/vCellWtr), y + vCellH);
+      }
+      break;
+      
+    case ZERO:
+    case TICK:
+    case PULSE:
+      gc.line(x, y + vCellH, x + vCellW/vCellWtr, y + vCellHsep);
+      gc.line(x + vCellW/vCellWtr/2, y + vCellHt/2, x + vCellW/vCellWtr, y + vCellH);
+      for (int i = 1; i < vCellWtr; ++ i) {
+        gc.line (x+i*(vCellW/vCellWtr), y + vCellH,
+	         x+(i+1)*(vCellW/vCellWtr), y + vCellHsep);
+        gc.line (x+i*(vCellW/vCellWtr), y + vCellHsep,
+	         x+(i+1)*(vCellW/vCellWtr), y + vCellH);
+      }
+      break;
+
+    case ONE:
+      gc.line(x, y + vCellHsep, x + vCellW/vCellWtr, y + vCellH);
+      gc.line(x + vCellW/vCellWtr/2, y + vCellHt/2, x + vCellW/vCellWtr, y + vCellHsep);
+      for (int i = 1; i < vCellWtr; ++ i) {
+        gc.line (x+i*(vCellW/vCellWtr), y + vCellH,
+	         x+(i+1)*(vCellW/vCellWtr), y + vCellHsep);
+        gc.line (x+i*(vCellW/vCellWtr), y + vCellHsep,
+	         x+(i+1)*(vCellW/vCellWtr), y + vCellH);
+      }
+      break;
+
+    case Z:
+      gc.line(x, y + vCellHt/2, x + vCellW/vCellWtr/2, y + vCellHt/2);
+      gc.line(x + vCellW/vCellWtr/2, y + vCellHt/2, x + vCellW/vCellWtr, y + vCellH);
+      gc.line(x + vCellW/vCellWtr/2, y + vCellHt/2, x + vCellW/vCellWtr, y + vCellHsep);
+      for (int i = 1; i < vCellWtr; ++ i) {
+        gc.line (x+i*(vCellW/vCellWtr), y + vCellH,
+	         x+(i+1)*(vCellW/vCellWtr), y + vCellHsep);
+        gc.line (x+i*(vCellW/vCellWtr), y + vCellHsep,
+	         x+(i+1)*(vCellW/vCellWtr), y + vCellH);
+      }
+      break;
     }
+
     break;
   
   case Z:
