@@ -546,8 +546,8 @@ static void draw_transition (gc &gc, int x, int y, const sigvalue &last,
       break;
     
     case Z:
-      gc.line (x, y + vCellW/4, x + vCellW/vCellWtr/2, y + vCellH);
-      gc.line (x, y + vCellW/4, x + vCellW/vCellWtr/2, y + vCellHsep);
+      gc.line (x, y + vCellHt/2, x + vCellW/vCellWtr/2, y + vCellH);
+      gc.line (x, y + vCellHt/2, x + vCellW/vCellWtr/2, y + vCellHsep);
       gc.line (x + vCellW/vCellWtr/2, y + vCellH, x + vCellW, y + vCellH);
       gc.line (x + vCellW/vCellWtr/2, y + vCellHsep, x + vCellW, y + vCellHsep);
       push_text (gc, x + vCellW/vCellWtr, y + vCellHtxt, value.text);
