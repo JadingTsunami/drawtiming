@@ -436,11 +436,11 @@ static void draw_transition (gc &gc, int x, int y, const sigvalue &last,
   
   case UNDEF:
   case X:
-    for (int i = 0; i < 4; ++ i) {
-      gc.line (x+i*(vCellW/4), y + vCellH,
-	       x+(i+1)*(vCellW/4), y + vCellHsep);
-      gc.line (x+i*(vCellW/4), y + vCellHsep,
-	       x+(i+1)*(vCellW/4), y + vCellH);
+    for (int i = 0; i < 8; ++ i) {
+      gc.line (x+i*(vCellW/8), y + vCellH,
+	       x+(i+1)*(vCellW/8), y + vCellHsep);
+      gc.line (x+i*(vCellW/8), y + vCellHsep,
+	       x+(i+1)*(vCellW/8), y + vCellH);
     }
     break;
   
