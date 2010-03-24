@@ -324,7 +324,7 @@ static void base_size (const data &d, int &w, int &h) {
 
   vCellHsep = vCellHt / 4;
   vCellH=vCellHt-vCellHsep;
-  vCellHtxt=vCellHt*5/8;
+  vCellHtxt=vCellHt*5/8;   // HACK: modified to work with this vCellHsep
   vCellHdel = vCellHt * 3/8;
   vCellHtdel=vCellHt/4;
   vCellWtsep=vCellW/4;
