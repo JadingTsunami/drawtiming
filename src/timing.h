@@ -25,6 +25,9 @@
 #include <iostream>
 #include <sstream>
 #include <exception>
+
+#include <strings.h>
+
 #ifndef LITE
 #include <Magick++.h>
 #else /* LITE */
