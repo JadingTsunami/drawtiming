@@ -1,0 +1,23 @@
+ZERO=0, ONE=1, XX=X, ZZ=Z, STATE="state", CLOCK=tick, PULSE=pulse.
+
+ZERO=0, ONE=0, XX=0, ZZ=0, STATE=0, CLOCK=0, PULSE=0.
+ZERO=0, ONE=1, XX=X, ZZ=Z, STATE="state", CLOCK=tick, PULSE=pulse.
+
+ZERO=1, ONE=1, XX=1, ZZ=1, STATE=1, CLOCK=1, PULSE=1.
+ZERO=0, ONE=1, XX=X, ZZ=Z, STATE="state", CLOCK=tick, PULSE=pulse.
+
+ZERO=X, ONE=X, XX=X, ZZ=X, STATE=X, CLOCK=X, PULSE=X.
+ZERO=0, ONE=1, XX=X, ZZ=Z, STATE="state", CLOCK=tick, PULSE=pulse.
+
+ZERO=Z, ONE=Z, XX=Z, XX=Z, STATE=Z, CLOCK=Z, PULSE=Z.
+ZERO=0, ONE=1, XX=X, ZZ=Z, STATE="state", CLOCK=tick, PULSE=pulse.
+
+ZERO="state", ONE="state", XX="state", XX="state", STATE="state", CLOCK="state", PULSE="state".
+ZERO=0, ONE=1, XX=X, ZZ=Z, STATE="state", CLOCK=tick, PULSE=pulse.
+
+ZERO=tick, ONE=tick, XX=tick, XX=tick, STATE=tick, CLOCK=tick, PULSE=tick.
+ZERO=0, ONE=1, XX=X, ZZ=Z, STATE="state", CLOCK=tick, PULSE=pulse.
+
+ZERO=pulse, ONE=pulse, XX=pulse, XX=pulse, STATE=pulse, CLOCK=pulse, PULSE=pulse.
+ZERO=0, ONE=1, XX=X, ZZ=Z, STATE="state", CLOCK=tick, PULSE=pulse.
+
