@@ -480,7 +480,7 @@ static void draw_transition (gc &gc, int x, int y, const sigvalue &last,
 	gc.line (x, y + vCellH, x + vCellW/vCellWtr, y + vCellHsep);
 	gc.line (x + vCellW/vCellWtr, y + vCellHsep, x + vCellW, y + vCellHsep);
 	gc.line (x + vCellW/vCellWtr, y + vCellH, x + vCellW, y + vCellH);
-	push_text (gc, x + vCellW/4, y + vCellHtxt, value.text);
+	push_text (gc, x + vCellW/vCellWtr, y + vCellHtxt, value.text);
       }
       else {
 	gc.line (x, y + vCellHsep, x + vCellW, y + vCellHsep);
@@ -494,14 +494,14 @@ static void draw_transition (gc &gc, int x, int y, const sigvalue &last,
       gc.line (x, y + vCellH, x + vCellW/vCellWtr, y + vCellHsep);
       gc.line (x + vCellW/vCellWtr, y + vCellHsep, x + vCellW, y + vCellHsep);
       gc.line (x, y + vCellH, x + vCellW, y + vCellH);
-      push_text (gc, x + vCellW/4, y + vCellHtxt, value.text);
+      push_text (gc, x + vCellW/vCellWtr, y + vCellHtxt, value.text);
       break;
     
     case ONE:
       gc.line (x, y + vCellHsep, x + vCellW/vCellWtr, y + vCellH);
       gc.line (x + vCellW/vCellWtr, y + vCellH, x + vCellW, y + vCellH);
       gc.line (x, y + vCellHsep, x + vCellW, y + vCellHsep);
-      push_text (gc, x + vCellW/4, y + vCellHtxt, value.text);
+      push_text (gc, x + vCellW/vCellWtr, y + vCellHtxt, value.text);
       break;
     
     case Z:
@@ -509,7 +509,7 @@ static void draw_transition (gc &gc, int x, int y, const sigvalue &last,
       gc.line (x, y + vCellW/4, x + vCellW/vCellWtr/2, y + vCellHsep);
       gc.line (x + vCellW/vCellWtr/2, y + vCellH, x + vCellW, y + vCellH);
       gc.line (x + vCellW/vCellWtr/2, y + vCellHsep, x + vCellW, y + vCellHsep);
-      push_text (gc, x + vCellW/4, y + vCellHtxt, value.text);
+      push_text (gc, x + vCellW/vCellWtr, y + vCellHtxt, value.text);
       break;
     }
   }
