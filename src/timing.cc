@@ -328,7 +328,7 @@ static void base_size (const data &d, int &w, int &h) {
   vCellHdel = vCellHt * 3/8;
   vCellHtdel=vCellHt/4;
   vCellWtsep=vCellW/4;
-  vCellWrm=vCellW/8;
+  vCellWrm=vCellW/vCellWtr/2;
 
   w = vCellWrm*2 + label_width (d) + vCellW * d.maxlen;
 
