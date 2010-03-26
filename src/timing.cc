@@ -565,7 +565,7 @@ static void draw_dependency (gc &gc, int x0, int y0, int x1, int y1) {
   gc.stroke_color ("blue");
 
   if (x0 == x1) {
-    int w = vCellW/20, h = vCellHt/6, h2 = vCellHt/10;
+    int w = vLineWidth*2, h = vLineWidth*6, h2 = vLineWidth*3;
 
     if (y0 < y1) {
       y1 -= vCellHt/4;
@@ -589,7 +589,8 @@ static void draw_dependency (gc &gc, int x0, int y0, int x1, int y1) {
     }
   }
   else {
-    int h = vCellHt/10, w1 = vCellW/12, w2 = vCellW/20;
+    int h = vLineWidth*2, w1 = vLineWidth*6, w2 = vLineWidth*3;
+    
     x1 -= vCellW/16;
     gc.fill_color ("none");
     gc.fill_opacity (0);
