@@ -27,6 +27,10 @@
 #  include <unistd.h>
 #  define getopt_long(C,V,S,O,I) getopt(C,V,S)
 #endif
+
+#include <stdlib.h>
+#include <stdio.h>
+
 using namespace std;
 #ifndef LITE
 using namespace Magick;
