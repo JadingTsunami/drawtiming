@@ -51,7 +51,7 @@ PROGRAMS = $(bin_PROGRAMS)
 am_drawtiming_OBJECTS = main.$(OBJEXT) parser.$(OBJEXT) \
 	scanner.$(OBJEXT) timing.$(OBJEXT)
 drawtiming_OBJECTS = $(am_drawtiming_OBJECTS)
-drawtiming_LDADD = $(LDADD)
+drawtiming_LDADD = $(LDADD) $(MAGICK_LIBS)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -159,7 +159,7 @@ target_alias = @target_alias@
 AM_CXXFLAGS = @MAGICK_CFLAGS@ -DYYDEBUG=1
 AM_YFLAGS = -d
 drawtiming_SOURCES = main.cc globals.h parser.yy scanner.ll timing.cc timing.h
-drawtiming_LDFLAGS = @MAGICK_LIBS@
+drawtiming_LDFLAGS = 
 EXTRA_DIST = parser.h
 BUILT_SOURCES = parser.h
 all: $(BUILT_SOURCES)
