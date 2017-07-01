@@ -871,7 +871,7 @@ Optional Features:
 Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
   --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
-  --without-magick        Build lite version without ImageMagick
+  --without-magick        Build lite version without Magick
 
 Some influential environment variables:
   CC          C compiler command
@@ -4676,12 +4676,12 @@ if test -n "$PKG_CONFIG"; then
         pkg_cv_MAGICK_CFLAGS="$MAGICK_CFLAGS"
     else
         if test -n "$PKG_CONFIG" && \
-    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"ImageMagick++\"") >&5
-  ($PKG_CONFIG --exists --print-errors "ImageMagick++") 2>&5
+    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"Magick++\"") >&5
+  ($PKG_CONFIG --exists --print-errors "Magick++") 2>&5
   ac_status=$?
   echo "$as_me:$LINENO: \$? = $ac_status" >&5
   (exit $ac_status); }; then
-  pkg_cv_MAGICK_CFLAGS=`$PKG_CONFIG --cflags "ImageMagick++" 2>/dev/null`
+  pkg_cv_MAGICK_CFLAGS=`$PKG_CONFIG --cflags "Magick++" 2>/dev/null`
 else
   pkg_failed=yes
 fi
@@ -4694,12 +4694,12 @@ if test -n "$PKG_CONFIG"; then
         pkg_cv_MAGICK_LIBS="$MAGICK_LIBS"
     else
         if test -n "$PKG_CONFIG" && \
-    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"ImageMagick++\"") >&5
-  ($PKG_CONFIG --exists --print-errors "ImageMagick++") 2>&5
+    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"Magick++\"") >&5
+  ($PKG_CONFIG --exists --print-errors "Magick++") 2>&5
   ac_status=$?
   echo "$as_me:$LINENO: \$? = $ac_status" >&5
   (exit $ac_status); }; then
-  pkg_cv_MAGICK_LIBS=`$PKG_CONFIG --libs "ImageMagick++" 2>/dev/null`
+  pkg_cv_MAGICK_LIBS=`$PKG_CONFIG --libs "Magick++" 2>/dev/null`
 else
   pkg_failed=yes
 fi
@@ -4718,14 +4718,14 @@ else
         _pkg_short_errors_supported=no
 fi
         if test $_pkg_short_errors_supported = yes; then
-	        MAGICK_PKG_ERRORS=`$PKG_CONFIG --short-errors --errors-to-stdout --print-errors "ImageMagick++"`
+	        MAGICK_PKG_ERRORS=`$PKG_CONFIG --short-errors --errors-to-stdout --print-errors "Magick++"`
         else
-	        MAGICK_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "ImageMagick++"`
+	        MAGICK_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "Magick++"`
         fi
 	# Put the nasty error message in config.log where it belongs
 	echo "$MAGICK_PKG_ERRORS" >&5
 
-	{ { echo "$as_me:$LINENO: error: Package requirements (ImageMagick++) were not met:
+	{ { echo "$as_me:$LINENO: error: Package requirements (Magick++) were not met:
 
 $MAGICK_PKG_ERRORS
 
@@ -4736,7 +4736,7 @@ Alternatively, you may set the environment variables MAGICK_CFLAGS
 and MAGICK_LIBS to avoid the need to call pkg-config.
 See the pkg-config man page for more details.
 " >&5
-echo "$as_me: error: Package requirements (ImageMagick++) were not met:
+echo "$as_me: error: Package requirements (Magick++) were not met:
 
 $MAGICK_PKG_ERRORS
 
